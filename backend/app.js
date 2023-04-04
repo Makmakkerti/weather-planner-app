@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const citiesRoutes = require("./routes/cities");
-// const weatherRoutes = require("./routes/weather");
+const weatherRoutes = require("./routes/weather");
 
 const app = express();
 
@@ -34,6 +34,6 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/cities", citiesRoutes);
-// app.use("/api/weather", postsRoutes);
+app.use("/api/weather", weatherRoutes);
 
 module.exports = app;
