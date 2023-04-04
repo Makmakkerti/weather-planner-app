@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
@@ -8,9 +9,7 @@ const citiesRoutes = require("./routes/cities");
 const app = express();
 
 mongoose
-  .connect(
-    "mongodb+srv://test:test7874507@mkcluster.6dowtqs.mongodb.net/?retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("Connected to database!");
   })
