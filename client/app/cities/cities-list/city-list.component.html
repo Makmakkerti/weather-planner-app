@@ -1,0 +1,40 @@
+<div class="example-container">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form>
+    <mat-form-field
+      appearance="outline"
+      *ngIf="cities.length > 0 && !isLoading"
+    >
+      <mat-label>Select city</mat-label>
+      <mat-select required>
+        <mat-option *ngFor="let city of cities" value="{{ city.name }}">{{
+          city.label
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <p class="info-text mat-body-1" *ngIf="cities.length <= 0 && !isLoading">
+    No cities added yet!
+  </p>
+</div>
+
+<mat-card>
+  <img
+    mat-card-image
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Tower_Bridge_from_Shad_Thames.jpg/300px-Tower_Bridge_from_Shad_Thames.jpg"
+    alt="Photo of London"
+    width="250px"
+  />
+
+  <mat-card-content>
+    <p>
+      <strong> London is a capital of great britain</strong>
+      London is a capital of great britain London is a capital of great britain
+      London is a capital of great britain London is a capital of great britain
+    </p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button>Like ❤️</button>
+    <button mat-button>share 👍</button>
+  </mat-card-actions>
+</mat-card>
