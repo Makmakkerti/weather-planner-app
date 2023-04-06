@@ -17,9 +17,10 @@ import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
 import { CitiesListComponent } from "./cities/cities-list/city-list.component";
 import { AppRoutingModule } from "./app-routing.module";
+import { CityComponent } from './cities/city/city.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, CitiesListComponent],
+  declarations: [AppComponent, HeaderComponent, CitiesListComponent, CityComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
