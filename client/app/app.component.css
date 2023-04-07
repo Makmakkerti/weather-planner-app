@@ -2,3 +2,7 @@ main {
   width: 60%;
   margin: 1rem auto;
 }
+
+mat-form-field {
+  width: 100%;
+}

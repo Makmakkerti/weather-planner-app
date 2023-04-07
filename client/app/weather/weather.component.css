@@ -1,5 +1,31 @@
+:host {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.left {
+  float: left;
+}
+
+.description img {
+  width: 100%;
+  height: 300px;
+}
+
+.top-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+mat-card::ng-deep.mat-card-header-text {
+  width: 100%;
+}
+
 mat-card {
   background: #e1e1e1;
+  min-width: 100%;
 }
 
 mat-card-title {
@@ -55,5 +81,5 @@ mat-card-subtitle {
 
 .description img {
   float: left;
-  margin: 5px;
+  margin: 5px auto;
 }

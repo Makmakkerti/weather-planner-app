@@ -20,10 +20,10 @@ router.post("", (req, res, next) => {
 
 router.get("", (req, res, next) => {
   City.find().then((cities) => {
-    console.log("CITIES: ", cities);
+    const filtered = cities.map((city) => city.label);
     res.status(200).json({
       message: "Cities fetched successfully!",
-      cities,
+      cities: filtered,
     });
   });
 });

@@ -1,9 +1,15 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-import { CitiesListComponent } from "./cities/cities-list/city-list.component";
+import { WeatherComponent } from "./weather/weather.component";
 
-const routes: Routes = [{ path: "", component: CitiesListComponent }];
+const routes: Routes = [
+  { path: "", component: WeatherComponent },
+  {
+    path: ":locationName",
+    component: WeatherComponent,
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

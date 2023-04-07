@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 
 import { HttpClientModule } from "@angular/common/http";
@@ -15,13 +15,13 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
-import { CitiesListComponent } from "./cities/cities-list/city-list.component";
+import { WeatherComponent } from "./weather/weather.component";
 import { AppRoutingModule } from "./app-routing.module";
-import { CityComponent } from './cities/city/city.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, CitiesListComponent, CityComponent],
+  declarations: [AppComponent, HeaderComponent, WeatherComponent],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

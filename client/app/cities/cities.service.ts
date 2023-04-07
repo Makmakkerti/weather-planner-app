@@ -4,12 +4,10 @@ import { Subject } from "rxjs";
 import { map } from "rxjs/operators";
 import { Router } from "@angular/router";
 
-import { City } from "./city.model";
-
 @Injectable({ providedIn: "root" })
 export class CitiesService {
-  private cities: City[] = [];
-  private citiesUpdated = new Subject<City[]>();
+  private cities: [] = [];
+  private citiesUpdated = new Subject<[]>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -18,13 +16,7 @@ export class CitiesService {
       .get<{ message: string; cities: any }>("http://localhost:3000/api/cities")
       .pipe(
         map((cityData) => {
-          return cityData.cities.map((city) => {
-            return {
-              label: city.label,
-              content: city.description,
-              name: city.name,
-            };
-          });
+          return cityData.cities;
         })
       )
       .subscribe((transformedCities) => {
@@ -37,9 +29,7 @@ export class CitiesService {
     return this.citiesUpdated.asObservable();
   }
 
-  getCity(id: string) {
-    return this.http.get<{ _id: string; label: string; description: string }>(
-      "http://localhost:3000/api/cities/" + id
-    );
+  getWeather(city: string) {
+    return this.http.get<any>("http://localhost:3000/api/weather?city=" + city);
   }
 }

@@ -1,0 +1,35 @@
+<mat-card class="mat-elevation-z5" *ngIf="data$ | async as data">
+  <span class="big-text" *ngIf="!data.city">Please select city to start.</span>
+  <mat-card-header>
+    <mat-card-title class="big-text">Weather in {{ data.name }}</mat-card-title>
+    <mat-card-subtitle class="medium-text"
+      >Today: {{ today | date }}</mat-card-subtitle
+    >
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="flex-row">
+      <div class="temp">
+        <img [src]="data.image" class="image" class="left" />
+        <span>{{ data.weather[0].description | titlecase }}</span>
+        <span class="medium-text"
+          >{{ data.main.temp | number : "0.0-0" }} C° (Feels like
+          {{ data.main.feels_like | number : "0.0-0" }} C°)
+        </span>
+      </div>
+      <div class="description">
+        <strong class="medium-text">Information about {{ data.name }}: </strong>
+        <img
+          mat-card-image
+          [src]="data.city.image"
+          alt="Photo of {{ data.name }}"
+        />
+        <p>
+          <br />
+          {{ data.city.description }}
+        </p>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions align="end"> </mat-card-actions>
+</mat-card>
