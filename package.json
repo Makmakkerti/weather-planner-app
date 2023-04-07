@@ -8,7 +8,10 @@
     "start": "npm run start --prefix backend",
     "server": "npm run dev --prefix backend",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "binstall": "npm install --prefix backend",
+    "finstall": "npm install --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install:all": "npm install && concurrently \"npm run binstall\" \"npm run finstall\""
   },
   "author": "makmakkerti",
   "license": "ISC",

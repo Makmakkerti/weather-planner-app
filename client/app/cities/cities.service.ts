@@ -28,8 +28,4 @@ export class CitiesService {
   getCityUpdateListener() {
     return this.citiesUpdated.asObservable();
   }
-
-  getWeather(city: string) {
-    return this.http.get<any>("http://localhost:3000/api/weather?city=" + city);
-  }
 }

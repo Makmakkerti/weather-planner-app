@@ -2,6 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const { resolve } = require("path");
 
 const citiesRoutes = require("./routes/cities");
 const weatherRoutes = require("./routes/weather");
@@ -19,24 +20,34 @@ mongoose
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static("./ui/"));
 
+const uiFolderAbsolutePath = process.env.PRODUCTION
+  ? "./ui/"
+  : resolve("./ui/");
+app.use(express.static(uiFolderAbsolutePath));
+
+const uiAbsolutePath = process.env.PRODUCTION
+  ? "./ui/index.html"
+  : resolve("./ui/index.html");
 app.get("/", (req, res) => {
-  res.sendFile("./ui/index.html");
+  res.sendFile(uiAbsolutePath);
 });
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, PUT, DELETE, OPTIONS"
-  );
-  next();
-});
+const cors = require("cors");
+app.use(cors());
+
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   res.setHeader(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   res.setHeader(
+//     "Access-Control-Allow-Methods",
+//     "GET, POST, PATCH, PUT, DELETE, OPTIONS"
+//   );
+//   next();
+// });
 
 app.use("/api/cities", citiesRoutes);
 app.use("/api/weather", weatherRoutes);
