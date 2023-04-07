@@ -26,6 +26,9 @@ mat-card::ng-deep.mat-card-header-text {
 mat-card {
   background: #e1e1e1;
   min-width: 100%;
+  box-shadow: 4px 5px 55px 0px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  margin-top: 25px;
 }
 
 mat-card-title {

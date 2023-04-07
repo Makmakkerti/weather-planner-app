@@ -3,7 +3,7 @@
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <div class="content" *ngIf="!isLoading">
     <span *ngIf="!isCitySelected">Please choose the city to start</span>
-    <mat-form-field>
+    <mat-form-field class="city-selector">
       <mat-label>Select city</mat-label>
       <mat-select [formControl]="cityControl">
         <mat-option *ngFor="let city of cities" [value]="city">

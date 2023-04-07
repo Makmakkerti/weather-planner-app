@@ -19,6 +19,11 @@ mongoose
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static("./ui/"));
+
+app.get("/", (req, res) => {
+  res.sendFile("./ui/index.html");
+});
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -35,5 +40,9 @@ app.use((req, res, next) => {
 
 app.use("/api/cities", citiesRoutes);
 app.use("/api/weather", weatherRoutes);
+
+app.get("*", (req, res) => {
+  res.redirect("/");
+});
 
 module.exports = app;

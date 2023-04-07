@@ -4,6 +4,8 @@
   "description": "Weather planner app",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build --prefix client",
+    "start": "npm run start --prefix backend",
     "server": "npm run dev --prefix backend",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
